@@ -1,13 +1,16 @@
 from rest_framework import serializers
-from .models import Mosques, Mosques_info
+from .models import Mosques, PrayerTimes
 
 
-class MosquesSerializers(serializers.ModelSerializer):
+class PrayerTimesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PrayerTimes
+        fields = ['id', 'mosque', 'bomdod', 'quyosh', 'peshin', 'asr', 'shom', 'xufton', 'date']
+
+
+class MosquesSerializer(serializers.ModelSerializer):
+    prayer_times = PrayerTimesSerializer(many=True, read_only=True)
+
     class Meta:
         model = Mosques
-        fields = '__all__'
-
-class MosquesInfoSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Mosques_info
-        fields = '__all__'
+        fields = ['id', 'title', 'jop_time', 'image', 'address', 'latitude', 'longitude', 'tel', 'prayer_times']

@@ -2,7 +2,7 @@ from django.contrib import admin
 # Import models from all apps
 from clinic_and_sanatorium.models import clinic, clinic_and_sanatorium
 from hotels.models import Hotels, Hotel_information
-from mosques.models import Mosques, Mosques_info
+from mosques.models import Mosques
 from parks.models import Parks, Parks_info
 from restaruants.models import Restaurants, Restaurant_info, Menu
 from registers.models import CustomUser, Language
@@ -87,8 +87,3 @@ class MosquesAdmin(admin.ModelAdmin):
     search_fields = ('title', 'address')
     list_filter = ('jop_time',)
 
-@admin.register(Mosques_info)
-class MosquesInfoAdmin(admin.ModelAdmin):
-    list_display = ('address', 'jop_time', 'latitude', 'longitude', 'tel')
-    search_fields = ('address', 'tel')
-    list_filter = ('jop_time',)

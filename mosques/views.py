@@ -1,13 +1,19 @@
-from rest_framework import viewsets
+from rest_framework.generics import ListCreateAPIView
+from .models import Mosques
+from .serializers import MosquesSerializer
+from rest_framework import generics
+from .models import PrayerTimes
+from .serializers import PrayerTimesSerializer
 
-from mosques.models import Mosques, Mosques_info
-from mosques.serializers import MosquesSerializers, MosquesInfoSerializers
 
-
-class MosquesViewSet(viewsets.ModelViewSet):
+class MosquesListCreateAPIView(ListCreateAPIView):
     queryset = Mosques.objects.all()
-    serializer_class = MosquesSerializers
+    serializer_class = MosquesSerializer
 
-class MosquesInfoViewSet(viewsets.ModelViewSet):
-    queryset = Mosques_info.objects.all()
-    serializer_class = MosquesInfoSerializers
+
+
+# PrayerTimes ro'yxatini olish va yangi vaqtlar qo'shish uchun
+class PrayerTimesListCreateAPIView(generics.ListCreateAPIView):
+    queryset = PrayerTimes.objects.all()
+    serializer_class = PrayerTimesSerializer
+
