@@ -9,6 +9,9 @@ class clinic(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
 class clinic_and_sanatorium(models.Model):
     GOLD = 'Gold'
     SILVER = 'Silver'

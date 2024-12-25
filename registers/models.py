@@ -4,7 +4,7 @@ from django.db import models
 
 class Language(models.Model):
     name = models.CharField(max_length=50)
-    code = models.CharField(max_length=10, unique=True)  # Masalan, 'uz', 'ru', 'en'
+    code = models.CharField(max_length=10, unique=True)
 
     def __str__(self):
         return self.name
@@ -35,9 +35,9 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
-    is_active = models.BooleanField(default=False)  # Tasdiqlanishgacha faol emas
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=True)
     verification_code = models.CharField(max_length=6, blank=True, null=True)
     is_email_verified = models.BooleanField(default=False)
     language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, blank=True)

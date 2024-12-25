@@ -35,6 +35,9 @@ INSTALLED_APPS = [
 ]
 
 
+
+
+
 # Static files settings
 STATIC_URL = '/static/'  # Statik fayllar URL
 
@@ -48,12 +51,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'  # Media fayllar URL orqali ko'rinadi
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Media fayllar saqlanadigan papka
 
-# REST framework settings
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',  # Token bilan autentifikatsiya
-    ],
-}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,7 +117,6 @@ USE_I18N = True
 USE_TZ = True
 
 # Static file settings for collection (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -135,3 +132,10 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'behruzmamasaliyev2@gmail.com'  # Email manzilingiz
 EMAIL_HOST_PASSWORD = 'dyqw arpx uchu tzjt'  # Google hisobingizdan olgan app parolingiz
 
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
